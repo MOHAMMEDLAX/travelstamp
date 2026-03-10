@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+import AddVisit from './pages/AddVisit';
+import MapView from './pages/MapView';
+import Stats from './pages/Stats';
+import VisitDetail from './pages/VisitDetail';
+import EditVisit from './pages/EditVisit';
+import Profile from './pages/Profile';
+import LandingPage from './pages/LandingPage';
+import { AppProvider } from './context/AppContext';
 
 function App() {
+  const token = localStorage.getItem('token');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <AppProvider>
+   <HashRouter>
+    
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={token ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/add-visit" element={<AddVisit />} />
+        <Route path="/map" element={<MapView />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="/visit/:id" element={<VisitDetail />} />
+        <Route path="/edit-visit/:id" element={<EditVisit />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+      
+    </HashRouter>
+    </AppProvider>
   );
 }
 
