@@ -17,7 +17,7 @@ function App() {
 
   return (
      <AppProvider>
-   <HashRouter>
+    <BrowserRouter>
     
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -33,7 +33,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
       </Routes>
       
-    </HashRouter>
+    </BrowserRouter>
     </AppProvider>
   );
 }
