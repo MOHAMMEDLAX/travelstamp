@@ -319,7 +319,10 @@ function Dashboard() {
               )}
             </button>
             {showNotif && (
-              <div style={{ position:'absolute', top:'calc(100% + 10px)', [lang==='ar'?'left':'right']:0, width: isMobile ? 'calc(100vw - 32px)' : '290px', background:dropdownBg, border:`1px solid ${cardBorder}`, borderRadius:'18px', boxShadow:'0 20px 50px rgba(0,0,0,0.3)', overflow:'hidden', zIndex:9999, animation:'slideDown 0.2s ease' }}>
+              <div style={{ position:'absolute', top:'calc(100% + 10px)', right: isMobile ? 'auto' : (lang==='ar' ? 'auto' : 0),
+left: isMobile ? '50%' : (lang==='ar' ? 0 : 'auto'),
+transform: isMobile ? 'translateX(-50%)' : 'none',
+width: isMobile ? 'calc(100vw - 32px)' : '290px', background:dropdownBg, border:`1px solid ${cardBorder}`, borderRadius:'18px', boxShadow:'0 20px 50px rgba(0,0,0,0.3)', overflow:'hidden', zIndex:9999, animation:'slideDown 0.2s ease' }}>
                 <div style={{ padding:'13px 16px', borderBottom:`1px solid ${cardBorder}`, fontSize:'12px', fontWeight:'800', color:subColor, display:'flex', justifyContent:'space-between', alignItems:'center' }}>
                   <div style={{ display:'flex', alignItems:'center', gap:'7px' }}><Icon name="bell" size={13} color={subColor}/><span>{T.notifTitle}</span></div>
                   {milestoneCount > 0 && <span style={{ background:'rgba(212,172,13,0.15)', border:'1px solid rgba(212,172,13,0.25)', color:'#D4AC0D', padding:'2px 8px', borderRadius:'10px', fontSize:'10px', fontWeight:'800' }}>{milestoneCount} {T.newBadge}</span>}
