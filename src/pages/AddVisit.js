@@ -268,7 +268,7 @@ function AddVisit() {
       const formData = new FormData();
       Object.entries(form).forEach(([k, v]) => formData.append(k, v));
       if (photo) formData.append('photo', photo);
-      await axios.post('http://127.0.0.1:8000/api/visits', formData, {
+      await axios.post('https://travelstamp-backend-production.up.railway.app/api/visits', formData, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
       });
       setSuccess(T.successMsg);

@@ -72,7 +72,7 @@ function Register() {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/register', {
+      const res = await axios.post('https://travelstamp-backend-production.up.railway.app/api/register', {
         name, email, password, password_confirmation: password,
       });
       localStorage.setItem('token', res.data.token);

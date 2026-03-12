@@ -196,7 +196,7 @@ function Dashboard() {
 
   const fetchVisits = async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/visits', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get('https://travelstamp-backend-production.up.railway.app/api/visits', { headers: { Authorization: `Bearer ${token}` } });
       setVisits(res.data);
     } catch (err) { console.error(err); }
     finally { setLoading(false); }
@@ -204,7 +204,7 @@ function Dashboard() {
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/user', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get('https://travelstamp-backend-production.up.railway.app/api/user', { headers: { Authorization: `Bearer ${token}` } });
       setUserName(res.data.name);
     } catch (err) {}
   };
