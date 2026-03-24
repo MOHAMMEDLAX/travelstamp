@@ -81,7 +81,7 @@ export default function MapView() {
   }
 
   useEffect(() => {
-    axios.get('https://travelstamp-backend-production.up.railway.app/api/visits', { headers: { Authorization: `Bearer ${token}` } })
+    axios.get('http://localhost:8000/api/visits', { headers: { Authorization: `Bearer ${token}` } })
       .then(res => setVisits(res.data)).catch(console.error);
   }, []);
 

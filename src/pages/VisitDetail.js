@@ -122,7 +122,7 @@ function VisitDetail() {
 
   const fetchVisit = async () => {
     try {
-      const res = await axios.get(`https://travelstamp-backend-production.up.railway.app/api/visits/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get(`http://localhost:8000/api/visits/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       setVisit(res.data);
     } catch (err) { console.error(err); }
     finally { setLoading(false); }
@@ -131,7 +131,7 @@ function VisitDetail() {
   const handleDelete = async () => {
     if (!window.confirm(T.confirmDelete)) return;
     try {
-      await axios.delete(`https://travelstamp-backend-production.up.railway.app/api/visits/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.delete(`http://localhost:8000/api/visits/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       window.location.href = '/dashboard';
     } catch (err) { console.error(err); }
   };

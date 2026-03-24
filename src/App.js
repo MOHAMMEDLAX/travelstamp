@@ -11,6 +11,7 @@ import EditVisit from './pages/EditVisit';
 import Profile from './pages/Profile';
 import LandingPage from './pages/LandingPage';
 import { AppProvider } from './context/AppContext';
+import PrivacyPage from './pages/Privacy';
 
 function App() {
   const token = localStorage.getItem('token');
@@ -31,6 +32,7 @@ function App() {
         <Route path="/visit/:id" element={<VisitDetail />} />
         <Route path="/edit-visit/:id" element={<EditVisit />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
       </Routes>
       
     </BrowserRouter>

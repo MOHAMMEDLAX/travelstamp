@@ -69,7 +69,7 @@ function Login() {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.post('https://travelstamp-backend-production.up.railway.app/api/login', { email, password });
+      const res = await axios.post('http://localhost:8000/api/login', { email, password });
       localStorage.setItem('token', res.data.token);
       window.location.href = '/dashboard';
     } catch (err) {

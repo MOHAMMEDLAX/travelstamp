@@ -212,7 +212,7 @@ function EditVisit() {
 
   const fetchVisit = async () => {
     try {
-      const res = await axios.get(`https://travelstamp-backend-production.up.railway.app/api/visits/${id}`, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get(`http://localhost:8000/api/visits/${id}`, { headers: { Authorization: `Bearer ${token}` } });
       const v = res.data;
       setForm({ country: v.country, country_code: v.country_code, city: v.city, visit_date: v.visit_date, notes: v.notes || '', rating: v.rating, latitude: v.latitude || '', longitude: v.longitude || '' });
       setCitySearch(v.city || '');
@@ -258,9 +258,9 @@ function EditVisit() {
         formData.append('_method', 'PUT');
         Object.entries(form).forEach(([k, v]) => formData.append(k, v));
         formData.append('photo', photo);
-        await axios.post(`https://travelstamp-backend-production.up.railway.app/api/visits/${id}`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } });
+        await axios.post(`http://localhost:8000/api/visits/${id}`, formData, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } });
       } else {
-        await axios.put(`https://travelstamp-backend-production.up.railway.app/api/visits/${id}`, form, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.put(`http://localhost:8000/api/visits/${id}`, form, { headers: { Authorization: `Bearer ${token}` } });
       }
       setSuccess(T.successMsg);
       setTimeout(() => window.location.href = `/visit/${id}`, 1500);

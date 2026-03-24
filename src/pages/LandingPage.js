@@ -102,6 +102,7 @@ const T = {
     footerSub: 'يوميات السفر الرقمية — وثّق كل خطوة',
     footerLogin: 'دخول',
     footerRegister: 'تسجيل',
+    privacy: 'سياسة الخصوصية',
     cities: [
       { city: 'باريس', code: 'fr' },
       { city: 'طوكيو', code: 'jp' },
@@ -137,6 +138,7 @@ const T = {
     footerSub: 'Digital Travel Diary — Document every step',
     footerLogin: 'Sign In',
     footerRegister: 'Register',
+    privacy: 'Privacy Policy',
     cities: [
       { city: 'Paris',  code: 'fr' },
       { city: 'Tokyo',  code: 'jp' },
@@ -791,6 +793,8 @@ export default function LandingPage() {
         <div style={{ display:'flex', gap:'14px' }}>
           <a href="/login"    style={{ fontSize:'11px', color:'rgba(255,255,255,0.28)', textDecoration:'none' }}>{t.footerLogin}</a>
           <a href="/register" style={{ fontSize:'11px', color:'rgba(255,255,255,0.28)', textDecoration:'none' }}>{t.footerRegister}</a>
+          {/* إضافة رابط سياسة الخصوصية */}
+          <a href="/privacy"  style={{ fontSize:'11px', color:'rgba(255,255,255,0.28)', textDecoration:'none' }}>{t.privacy}</a>
         </div>
       </footer>
     </div>

@@ -199,8 +199,8 @@ function Profile() {
   const fetchData = async () => {
     try {
       const [userRes, visitsRes] = await Promise.all([
-        axios.get('https://travelstamp-backend-production.up.railway.app/api/user',   { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get('https://travelstamp-backend-production.up.railway.app/api/visits', { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get('http://localhost:8000/api/user',   { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get('http://localhost:8000/api/visits', { headers: { Authorization: `Bearer ${token}` } }),
       ]);
       setUser(userRes.data);
       setVisits(visitsRes.data);
@@ -222,14 +222,14 @@ function Profile() {
       formData.append('name', form.name);
       formData.append('_method', 'PUT');
       if (avatar) formData.append('avatar', avatar);
-      await axios.post('https://travelstamp-backend-production.up.railway.app/api/user', formData, {
+      await axios.post('http://localhost:8000/api/user', formData, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
       });
       setUser({ ...user, name: form.name });
       setSuccess(T.savedMsg); setEditing(false); setAvatar(null);
     } catch {
       try {
-        await axios.put('https://travelstamp-backend-production.up.railway.app/api/user', { name: form.name }, {
+        await axios.put('http://localhost:8000/api/user', { name: form.name }, {
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' }
         });
         setUser({ ...user, name: form.name });

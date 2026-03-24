@@ -137,7 +137,7 @@ function Stats() {
 
   const fetchVisits = async () => {
     try {
-      const res = await axios.get('https://travelstamp-backend-production.up.railway.app/api/visits', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get('http://localhost:8000/api/visits', { headers: { Authorization: `Bearer ${token}` } });
       setVisits(res.data);
     } catch (err) { console.error(err); }
     finally { setLoading(false); }
