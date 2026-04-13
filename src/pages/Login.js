@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import axios from 'axios';
 import { useApp } from '../context/AppContext';
+import { Link } from 'react-router-dom';
 
 const Icon = ({ name, size = 16, color = 'currentColor', strokeWidth = 1.8 }) => {
   const s = { width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', flexShrink: 0, display: 'inline-block' };
@@ -63,21 +64,20 @@ function Login() {
       opacity: (Math.random() * 0.4 + 0.1).toFixed(2),
     }));
   }
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    try {
-      const res = await axios.post('http://localhost:8000/api/login', { email, password });
-      localStorage.setItem('token', res.data.token);
-      window.location.href = '/dashboard';
-    } catch (err) {
-      setError(T.error);
-    } finally {
-      setLoading(false);
-    }
-  };
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError('');
+  try {
+    const res = await axios.post('http://localhost:8000/api/login', { email, password });
+    localStorage.setItem('token', res.data.token);
+    window.location.href = '/dashboard';
+  } catch (err) {
+    setError(T.error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const inputStyle = {
     width: '100%', padding: '13px 16px', borderRadius: '14px',
@@ -257,9 +257,9 @@ function Login() {
 
         <p style={{ textAlign: 'center', marginTop: '24px', fontSize: '13px', color: 'rgba(255,255,255,0.3)' }}>
           {T.noAccount}{' '}
-          <a href="/register" style={{ color: '#D4AC0D', fontWeight: '800', textDecoration: 'none' }}>
+          <Link to="/register" style={{ color: '#D4AC0D', fontWeight: '800', textDecoration: 'none' }}>
             {T.register}
-          </a>
+          </Link>
         </p>
       </div>
     </div>
