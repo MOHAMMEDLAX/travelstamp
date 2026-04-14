@@ -25,6 +25,8 @@ const Icon = ({ name, size = 16, color = 'currentColor', strokeWidth = 1.8 }) =>
   return icons[name] || null;
 };
 
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.travelstamp.app';
+
 const featuresData = {
   ar: [
     { iconName: 'map',    title: 'خريطة تفاعلية',     desc: 'شاهد كل رحلاتك على خريطة عالمية تفاعلية مع pins مخصصة لكل دولة زرتها', color: '#2E86C1' },
@@ -79,8 +81,7 @@ const T = {
     h1b: 'احفظ ذكرياتك',
     subtitle: 'TravelStamp يحوّل رحلاتك إلى طوابع رقمية مميزة — خريطة تفاعلية، إحصائيات ذكية، وذكريات تدوم للأبد',
     startFree: 'ابدأ مجاناً الآن',
-    login: 'تسجيل الدخول',
-    loginArrow: 'تسجيل الدخول',
+    dashboard: 'لوحة التحكم',
     downloadApp: 'تحميل التطبيق',
     countries: 'دولة مدعومة',
     trips: 'رحلات',
@@ -100,7 +101,7 @@ const T = {
     ctaSub: 'انضم وابدأ بتوثيق رحلاتك — مجاناً تماماً، بدون أي قيود',
     createFree: 'إنشاء حساب مجاني',
     footerSub: 'يوميات السفر الرقمية — وثّق كل خطوة',
-    footerLogin: 'دخول',
+    footerDashboard: 'لوحة التحكم',
     footerRegister: 'تسجيل',
     privacy: 'سياسة الخصوصية',
     cities: [
@@ -115,8 +116,7 @@ const T = {
     h1b: 'Keep your memories',
     subtitle: 'TravelStamp turns your trips into unique digital stamps — interactive map, smart stats, and memories that last forever',
     startFree: 'Start Free Now',
-    login: 'Sign In',
-    loginArrow: 'Sign In',
+    dashboard: 'Dashboard',
     downloadApp: 'Download App',
     countries: 'Supported Countries',
     trips: 'Trips',
@@ -136,7 +136,7 @@ const T = {
     ctaSub: 'Join and start documenting your trips — completely free, no restrictions',
     createFree: 'Create Free Account',
     footerSub: 'Digital Travel Diary — Document every step',
-    footerLogin: 'Sign In',
+    footerDashboard: 'Dashboard',
     footerRegister: 'Register',
     privacy: 'Privacy Policy',
     cities: [
@@ -311,7 +311,6 @@ export default function LandingPage() {
           animation:slideDown .25s ease forwards;
         }
 
-        /* mobile adjustments */
         @media (max-width:767px) {
           .hero-grid   { grid-template-columns:1fr !important; text-align:center; }
           .hero-btns   { justify-content:center !important; }
@@ -391,23 +390,23 @@ export default function LandingPage() {
           </span>
         </div>
 
-        {/* روابط — تختفي على الجوال */}
+        {/* روابط */}
         <div className="nav-links" style={{ display:'flex', gap:'2px' }}>
           <a href="#features" className="nav-a">{t.navFeatures}</a>
           <a href="#how"      className="nav-a">{t.navHow}</a>
           <a href="#stats"    className="nav-a">{t.navStats}</a>
         </div>
 
-        {/* أزرار — تختفي على الجوال */}
+        {/* أزرار */}
         <div className="nav-btns" style={{ display:'flex', gap:'8px', alignItems:'center' }}>
-          <a href="/login"    className="btn-ghost" style={{ padding:'7px 18px', fontSize:'12px' }}>{t.login}</a>
-          <a href="/register" className="btn-red"   style={{ padding:'7px 18px', fontSize:'12px' }}>
+          <a href="/dashboard" className="btn-ghost" style={{ padding:'7px 18px', fontSize:'12px' }}>{t.dashboard}</a>
+          <a href="/register"  className="btn-red"   style={{ padding:'7px 18px', fontSize:'12px' }}>
             <Icon name="plane" size={12} color="white" strokeWidth={2}/>
             {t.startFree}
           </a>
         </div>
 
-        {/* هامبرغر — يظهر على الجوال فقط */}
+        {/* هامبرغر */}
         <button
           className="hamburger"
           onClick={() => setMobileMenu(!mobileMenu)}
@@ -423,7 +422,7 @@ export default function LandingPage() {
         </button>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu */}
       {mobileMenu && (
         <div className="mobile-menu" style={{
           position:'fixed', top:'64px', left:0, right:0, zIndex:999,
@@ -449,8 +448,8 @@ export default function LandingPage() {
             >{item.label}</a>
           ))}
           <div style={{ display:'flex', gap:'8px', marginTop:'8px' }}>
-            <a href="/login"    className="btn-ghost" style={{ flex:1, justifyContent:'center', fontSize:'13px', padding:'11px' }}>{t.login}</a>
-            <a href="/register" className="btn-red"   style={{ flex:1, justifyContent:'center', fontSize:'13px', padding:'11px' }}>{t.startFree}</a>
+            <a href="/dashboard" className="btn-ghost" style={{ flex:1, justifyContent:'center', fontSize:'13px', padding:'11px' }}>{t.dashboard}</a>
+            <a href="/register"  className="btn-red"   style={{ flex:1, justifyContent:'center', fontSize:'13px', padding:'11px' }}>{t.startFree}</a>
           </div>
         </div>
       )}
@@ -507,17 +506,16 @@ export default function LandingPage() {
               <Icon name="rocket" size={14} color="white"/>
               {t.startFree}
             </a>
-            <a href="/login" className="btn-ghost" style={{ fontSize: isMobile ? '13px' : '14px' }}>
+            <a href="/dashboard" className="btn-ghost" style={{ fontSize: isMobile ? '13px' : '14px' }}>
               <Icon name="user" size={14} color="rgba(255,255,255,0.8)"/>
-              {t.loginArrow}
+              {t.dashboard}
             </a>
             {!isMobile && (
-            <a href="https://play.google.com/store/apps/details?id=com.travelstamp" 
-   target="_blank" rel="noopener noreferrer"
-   className="btn-gold" style={{ fontSize:'13px' }}>
-  <Icon name="download" size={14} color="#D4AC0D"/>
-  {t.downloadApp}
-</a>
+              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer"
+                className="btn-gold" style={{ fontSize:'13px' }}>
+                <Icon name="download" size={14} color="#D4AC0D"/>
+                {t.downloadApp}
+              </a>
             )}
           </div>
 
@@ -542,7 +540,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* الكوكب — مخفي على الجوال */}
+        {/* الكوكب */}
         {!isTablet && (
           <div style={{
             display:'flex', alignItems:'center', justifyContent:'center',
@@ -761,17 +759,16 @@ export default function LandingPage() {
               <Icon name="rocket" size={14} color="white"/>
               {t.createFree}
             </a>
-            <a href="/login" className="btn-ghost" style={{ fontSize: isMobile ? '13px' : '14px', padding: isMobile ? '11px 22px' : '13px 32px' }}>
+            <a href="/dashboard" className="btn-ghost" style={{ fontSize: isMobile ? '13px' : '14px', padding: isMobile ? '11px 22px' : '13px 32px' }}>
               <Icon name="user" size={14} color="rgba(255,255,255,0.8)"/>
-              {t.login}
+              {t.dashboard}
             </a>
           </div>
-         <a href="https://play.google.com/store/apps/details?id=com.travelstamp"
-   target="_blank" rel="noopener noreferrer"
-   className="btn-gold" style={{ fontSize:'12px', padding:'9px 22px' }}>
-  <Icon name="download" size={13} color="#D4AC0D"/>
-  {t.downloadApp}
-</a>
+          <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer"
+            className="btn-gold" style={{ fontSize:'12px', padding:'9px 22px' }}>
+            <Icon name="download" size={13} color="#D4AC0D"/>
+            {t.downloadApp}
+          </a>
         </div>
       </section>
 
@@ -795,10 +792,9 @@ export default function LandingPage() {
           {t.footerSub}
         </div>
         <div style={{ display:'flex', gap:'14px' }}>
-          <a href="/login"    style={{ fontSize:'11px', color:'rgba(255,255,255,0.28)', textDecoration:'none' }}>{t.footerLogin}</a>
-          <a href="/register" style={{ fontSize:'11px', color:'rgba(255,255,255,0.28)', textDecoration:'none' }}>{t.footerRegister}</a>
-          {/* إضافة رابط سياسة الخصوصية */}
-          <a href="/privacy"  style={{ fontSize:'11px', color:'rgba(255,255,255,0.28)', textDecoration:'none' }}>{t.privacy}</a>
+          <a href="/dashboard" style={{ fontSize:'11px', color:'rgba(255,255,255,0.28)', textDecoration:'none' }}>{t.footerDashboard}</a>
+          <a href="/register"  style={{ fontSize:'11px', color:'rgba(255,255,255,0.28)', textDecoration:'none' }}>{t.footerRegister}</a>
+          <a href="/privacy"   style={{ fontSize:'11px', color:'rgba(255,255,255,0.28)', textDecoration:'none' }}>{t.privacy}</a>
         </div>
       </footer>
     </div>
