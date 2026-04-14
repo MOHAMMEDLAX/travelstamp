@@ -512,10 +512,12 @@ export default function LandingPage() {
               {t.loginArrow}
             </a>
             {!isMobile && (
-              <button className="btn-gold" style={{ fontSize:'13px' }}>
-                <Icon name="download" size={14} color="#D4AC0D"/>
-                {t.downloadApp}
-              </button>
+            <a href="https://play.google.com/store/apps/details?id=com.travelstamp" 
+   target="_blank" rel="noopener noreferrer"
+   className="btn-gold" style={{ fontSize:'13px' }}>
+  <Icon name="download" size={14} color="#D4AC0D"/>
+  {t.downloadApp}
+</a>
             )}
           </div>
 
@@ -764,10 +766,12 @@ export default function LandingPage() {
               {t.login}
             </a>
           </div>
-          <button className="btn-gold" style={{ fontSize:'12px', padding:'9px 22px' }}>
-            <Icon name="download" size={13} color="#D4AC0D"/>
-            {t.downloadApp}
-          </button>
+         <a href="https://play.google.com/store/apps/details?id=com.travelstamp"
+   target="_blank" rel="noopener noreferrer"
+   className="btn-gold" style={{ fontSize:'12px', padding:'9px 22px' }}>
+  <Icon name="download" size={13} color="#D4AC0D"/>
+  {t.downloadApp}
+</a>
         </div>
       </section>
 
