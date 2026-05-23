@@ -386,7 +386,7 @@ export default function LandingPage() {
         <div style={{ display:'flex', alignItems:'center', gap:'9px', flexShrink:0 }}>
           <img src="/logo.png" alt="TravelStamp" style={{ width:'38px', height:'38px', objectFit:'contain' }}/>
           <span style={{ fontSize:'18px', fontWeight:'900', letterSpacing:'-0.4px' }}>
-            Travel<span style={{ color:'#D4AC0D' }}>Stamp</span>
+            Travel<span style={{ color:'#da402c' }}>Stamp</span>
           </span>
         </div>
 
